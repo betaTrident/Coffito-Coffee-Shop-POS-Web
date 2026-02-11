@@ -1,0 +1,347 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+
+  body{
+    font-family: Poppins;
+  }
+
+  h5{
+    @apply text-[1.4rem] font-semibold
+  }
+
+  h2{
+    @apply text-[1.2rem] font-medium 
+  }
+
+  h1{
+    @apply text-[1.5rem] font-medium text-text-muted
+  }
+  .nav-con {
+    @apply relative flex-col items-center h-full bg-sidebar-bg text-text-muted border border-border-color;
+  }
+  .nav-con ul nav-li-hover li{
+    @apply mb-[-4px]
+  }
+  .nav-li-hover {
+    @apply mx-3 px-4
+  }
+  .nav-li-hover-sales {
+    @apply mx-3 px-4
+  }
+
+
+  .nav-li-hover:hover {
+    @apply  bg-border-color rounded-[10px] text-black;
+  }
+
+  
+  .nav-a {
+    @apply flex items-center gap-3 h-[50px];
+  }
+
+  .icon {
+    @apply text-[1.6rem];
+  }
+
+  .logo {
+    @apply   h-full 
+  }
+
+  
+  .logo img {
+    @apply   h-[50px]  w-[50px]
+  }
+
+.main {
+  @apply  h-full min-h-screen bg-primary-bg text-black transition-all flex flex-col  w-full ;
+}
+
+  .topbar-con {
+    @apply bg-card-bg w-full h-12 flex justify-between items-center pr-5 pl-5;
+  }
+
+  .details {
+    @apply flex w-full px-5 h-full pb-4;
+  }
+  .details div {
+    @apply w-full flex-grow;
+  }
+
+  .col-1 {
+    @apply w-full h-full flex flex-col p-3;
+  }
+
+  .card-con-sales {
+    @apply flex  gap-3 ;
+  }
+
+  .card-con-sales .card-con-sales-div {
+    @apply w-full  h-auto bg-card-bg rounded-[10px] border border-border-color flex flex-col p-5;
+  }
+
+  .dashboard-text-con {
+    @apply flex flex-row border-none gap-3 w-full h-full items-center;
+  }
+
+  
+  .dashboard-text-con img{
+    @apply w-[30px] h-[30px];
+  }
+  .dashboard-text-con span{
+    @apply text-[1.2rem];
+  }
+
+
+  .table-con {
+    @apply bg-gray-200 rounded-[5px];
+  }
+
+  .col-2 {
+    @apply w-full h-full p-3 ;
+  }
+
+  .cardHeader {
+    @apply mb-2;
+  }
+
+  .best-selling-main-con {
+    @apply p-3 h-full flex flex-col bg-card-bg rounded-[5px];
+  }
+  .best-selling {
+    @apply relative h-full w-full flex flex-col gap-3 max-h-[100vw] overflow-y-auto ;
+  }
+
+  .best-selling .card-con {
+    @apply flex items-center  bg-primary-bg  text-black rounded-[10px] border border-border-color gap-2;
+  }
+
+  .best-selling .prod-con {
+    @apply h-11 w-11 bg-[#FF8C18] rounded-[10px] flex justify-center  items-center;
+  }
+  .best-selling .prod-con img{
+    @apply w-[30px] h-[30px]
+  }
+
+
+
+  .search{
+    @apply flex items-end
+  }
+
+  .search label {
+    @apply flex  items-center bg-card-bg border border-border-color rounded-[10px] p-2 w-[300px] h-[35px];
+  }
+  .search input {
+    @apply bg-transparent border-none outline-none text-black ;
+  }
+
+
+
+
+
+
+  .button {
+    @apply flex  gap-1 justify-center items-center bg-accent w-[150px] h-[30px] text-white text-[12px] pl-2 pr-2 rounded-[5px] ml-5;
+  }
+.button-icon{
+  @apply text-[1.1rem]
+}
+  
+  .exportButton {
+    @apply flex  gap-1 justify-center items-center bg-accent w-[100px] h-[30px] text-white text-[12px] pl-2 pr-2 rounded-[5px] ml-5;
+  }
+
+  /* customStyles.css */
+  .dropdown-item {
+    @apply px-3 py-1  cursor-pointer transition ease-in-out duration-300  
+  }
+
+  .dropdown-item:hover {
+    @apply text-gray-800 rounded-md hover:bg-border-color ;
+  }
+
+
+  /* styles.css */
+  .modal-main-con {
+    @apply w-full z-50 fixed inset-0 flex justify-center bg-black bg-opacity-50;
+  }
+
+  .modal-con {
+    @apply bg-white p-6 h-[160px] mt-5 rounded-lg shadow-lg w-[300px] text-center transform;
+  }
+
+  .SucSaveIcon {
+    @apply w-full flex justify-center mt-3 text-3xl text-accent;
+  }
+
+
+
+  .grand-con{
+    @apply pl-5 mt-3 mb-2
+  }
+
+  
+  .grand-con label{
+    @apply text-[1rem] text-text-muted
+  }
+
+
+
+
+
+/* ----------TABLE----------------- */
+
+.table-wrapper-prod {
+  @apply rounded-md h-full overflow-hidden bg-card-bg border border-border-color;
+}
+
+.con-table {
+  @apply w-full overflow-hidden h-full   p-1 rounded-lg bg-border-color  ;
+}
+
+
+.con-table table {
+  @apply w-full border-collapse text-black h-full mb-48 ;
+}
+
+.con-table thead {
+  @apply w-full;
+}
+
+.con-table tr {
+  @apply table w-full;
+}
+
+.con-table th,
+.con-table td {
+  @apply p-2 text-center w-[250px] ;
+}
+
+.con-table tbody {
+  @apply block overflow-y-auto h-full;
+}
+
+.con-table tbody tr {
+  @apply table w-full cursor-pointer transition-colors duration-300 text-xs;
+}
+
+.con-table tbody tr:nth-child(odd) {
+  @apply bg-card-bg;
+}
+
+.con-table tbody tr:nth-child(even) {
+  @apply bg-primary-bg;
+}
+
+.con-table tbody tr:hover {
+  @apply bg-border-color;
+}
+
+.con-table thead tr {
+  @apply bg-border-color;
+}
+
+.con-table thead th {
+  @apply font-bold sticky top-0 ;
+}
+
+/* =============SCROLL BAR DESIGN ================ */
+.con-table tbody::-webkit-scrollbar {
+  @apply w-2.5;
+}
+
+.con-table tbody::-webkit-scrollbar-track {
+  @apply bg-card-bg rounded-lg;
+}
+
+.con-table tbody::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-lg;
+}
+
+
+/* -------ACTION------ */
+.action-btn{
+  @apply flex justify-center items-center gap-4
+}
+
+.action-btn button{
+  @apply text-[1.1rem]
+}
+.action-btn .del{
+  @apply text-red-600
+}
+.action-btn .update{
+  @apply text-green-600
+}
+
+/* -------LOGIN------- */
+.login-parent {
+  @apply bg-transparent;
+}
+
+.login-box {
+  @apply flex items-center bg-card-bg justify-center border-4 border-border-color flex-col rounded-lg w-[25%] py-8;
+}
+
+.login-btn {
+  @apply ml-[25%] bg-orange-500 w-[50%] h-[30px] font-semibold text-white;
+}
+
+.input-fields {
+  @apply rounded-md w-full h-[35px] border border-solid border-gray-400 pl-[10px] ;
+}
+
+.loginlogo img {
+  @apply w-full h-auto max-w-[500px];
+}
+
+.h2login {
+  @apply text-3xl pb-[20px] font-extrabold text-orange-700;
+}
+
+
+/* ACCOUNT */
+.accs-parent-div{
+  @apply pl-[3%]
+}
+
+.st-upd-btn-span{
+  @apply ml-[30%];
+}
+
+.adm-info{
+  @apply ml-[20%];
+}
+
+.acc-icon{
+  @apply pl-[10%] pr-[10%];
+}
+
+.acc-txt-div{
+  @apply pl-[10px];
+}
+
+.accs-parent-div{
+  @apply pt-[2%];
+}
+
+.acc-parent{
+  @apply rounded-[10px];
+}
+  
+.acc-txt-div{
+  @apply pb-1;
+}
+
+/* UPDATE ACCOUNT MODAL */
+
+
+
+/* ERROR MESSAGE */
+.error-message{
+  @apply text-start text-red-600  text-sm
+}
+
+}
