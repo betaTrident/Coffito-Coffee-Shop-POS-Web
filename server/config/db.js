@@ -1,9 +1,12 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 
-dotenv.config();
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+dotenv.config({ path: path.resolve(__dirname, "../../.env") });
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/COFFITO";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/COFFITO";
 
 const connectDB = async () => {
   try {

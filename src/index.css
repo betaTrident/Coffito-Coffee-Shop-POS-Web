@@ -278,19 +278,122 @@
 
 /* -------LOGIN------- */
 .login-parent {
-  @apply bg-transparent;
+  @apply relative min-h-screen flex items-center justify-center p-4 md:p-8 overflow-hidden;
+  background: radial-gradient(circle at 12% 8%, #ffe3bc 0%, #ffd09a 16%, rgba(255, 203, 143, 0.35) 28%, transparent 36%),
+    radial-gradient(circle at 86% 14%, rgba(255, 152, 47, 0.28) 0%, rgba(255, 152, 47, 0.1) 18%, transparent 36%),
+    linear-gradient(145deg, #fff6ea 0%, #f7eee2 40%, #efe8df 100%);
+}
+
+.login-parent::before,
+.login-parent::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(1px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.login-parent::before {
+  width: 220px;
+  height: 220px;
+  left: -54px;
+  bottom: 90px;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 177, 93, 0.5), rgba(255, 177, 93, 0.12));
+  animation: login-float-slow 9s ease-in-out infinite;
+}
+
+.login-parent::after {
+  width: 180px;
+  height: 180px;
+  right: -35px;
+  top: 74px;
+  background: radial-gradient(circle at 30% 30%, rgba(199, 125, 58, 0.45), rgba(199, 125, 58, 0.08));
+  animation: login-float-fast 6.8s ease-in-out infinite;
+}
+
+.login-shell {
+  @apply relative w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 rounded-3xl overflow-hidden;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  background: linear-gradient(130deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.45));
+  box-shadow: 0 24px 65px rgba(72, 40, 18, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(14px);
+  z-index: 1;
+  animation: login-card-enter 280ms ease-out;
+}
+
+.login-shell::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(130deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.login-brand-panel {
+  @apply hidden lg:flex flex-col justify-between p-10;
+  background: linear-gradient(165deg, rgba(255, 246, 232, 0.9) 0%, rgba(255, 225, 183, 0.85) 48%, rgba(227, 171, 116, 0.74) 100%);
+  border-right: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.login-brand-badge {
+  @apply w-fit px-3 py-1 rounded-full text-sm font-semibold tracking-wide text-white;
+  background: linear-gradient(135deg, #a65a1e, #e9781f);
+  box-shadow: 0 8px 22px rgba(233, 120, 31, 0.33);
+}
+
+.login-logo-img {
+  @apply w-full max-w-[360px] mx-auto;
+  filter: drop-shadow(0 16px 28px rgba(112, 58, 23, 0.28));
+  animation: login-float-fast 6.6s ease-in-out infinite;
+}
+
+.login-brand-copy {
+  @apply text-[15px] leading-6 text-[#4f2f19] max-w-[30ch] font-medium;
 }
 
 .login-box {
-  @apply flex items-center bg-card-bg justify-center border-4 border-border-color flex-col rounded-lg w-[25%] py-8;
+  @apply flex flex-col justify-center px-6 py-8 sm:px-10 sm:py-10 md:px-14;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.84), rgba(255, 249, 242, 0.78));
 }
 
 .login-btn {
-  @apply ml-[25%] bg-orange-500 w-[50%] h-[30px] font-semibold text-white;
+  @apply mt-2 h-12 rounded-xl w-full font-semibold text-white transition-all duration-300;
+  background: linear-gradient(135deg, #d56a1a 0%, #f08a28 52%, #e9781f 100%);
+  box-shadow: 0 10px 24px rgba(233, 120, 31, 0.34);
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(233, 120, 31, 0.4);
+}
+
+.login-btn:focus-visible {
+  @apply outline-none ring-2 ring-offset-2 ring-[#e9781f];
+}
+
+.login-btn:disabled {
+  @apply cursor-not-allowed;
+  opacity: 0.65;
+  transform: none;
+  box-shadow: 0 8px 18px rgba(233, 120, 31, 0.2);
 }
 
 .input-fields {
-  @apply rounded-md w-full h-[35px] border border-solid border-gray-400 pl-[10px] ;
+  @apply rounded-xl w-full h-12 border border-solid px-4 text-[15px] transition-all duration-200;
+  border-color: rgba(210, 152, 94, 0.38);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(6px);
+}
+
+.input-fields::placeholder {
+  color: #7b8794;
+}
+
+.input-fields:focus {
+  @apply outline-none;
+  border-color: #e9781f;
+  box-shadow: 0 0 0 3px rgba(233, 120, 31, 0.18);
 }
 
 .loginlogo img {
@@ -298,7 +401,125 @@
 }
 
 .h2login {
-  @apply text-3xl pb-[20px] font-extrabold text-orange-700;
+  @apply text-[32px] leading-[1.15] font-semibold text-[#4f2f19];
+}
+
+.login-subtitle {
+  @apply mt-2 mb-7 text-[15px] leading-6 text-[#7c4f2d];
+}
+
+.login-fields {
+  @apply flex flex-col gap-5;
+}
+
+.login-field-group {
+  @apply flex flex-col gap-2;
+}
+
+.login-label {
+  @apply text-[14px] font-medium text-[#6b3f21];
+}
+
+.login-password-wrap {
+  @apply relative;
+}
+
+.login-password-input {
+  @apply pr-16;
+}
+
+.login-show-password {
+  @apply absolute right-3 top-1/2 -translate-y-1/2 text-[13px] font-semibold text-[#9b4e1d] px-2 py-1 rounded-md;
+}
+
+.login-show-password:hover {
+  @apply bg-[#fff0df];
+}
+
+.login-show-password:focus-visible {
+  @apply outline-none ring-2 ring-offset-2 ring-[#e9781f];
+}
+
+.login-error-banner {
+  @apply rounded-xl border px-4 py-3 text-sm;
+  border-color: rgba(188, 64, 64, 0.34);
+  background: rgba(255, 240, 240, 0.62);
+  color: #8b1d1d;
+}
+
+.login-error-message {
+  @apply text-sm text-[#b42318];
+}
+
+.login-helper-copy {
+  @apply mt-1 text-center text-[13px] text-[#8a5a36];
+}
+
+@keyframes login-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.99);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes login-float-slow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -16px, 0);
+  }
+}
+
+@keyframes login-float-fast {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .login-shell {
+    @apply max-w-[560px] rounded-2xl;
+  }
+
+  .login-box {
+    @apply px-6 py-8 sm:px-10;
+  }
+}
+
+@media (max-width: 640px) {
+  .login-parent {
+    @apply p-3;
+  }
+
+  .login-shell {
+    @apply rounded-[20px];
+  }
+
+  .h2login {
+    @apply text-[28px];
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .login-shell,
+  .login-logo-img,
+  .login-parent::before,
+  .login-parent::after {
+    animation: none;
+  }
 }
 
 
@@ -343,5 +564,92 @@
 .error-message{
   @apply text-start text-red-600  text-sm
 }
+
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+  }
+
+}
+
+@layer base {
+  * {
+    @apply border-border;
+
+  }
+  body {
+    @apply bg-background text-foreground;
+
+  }
 
 }
