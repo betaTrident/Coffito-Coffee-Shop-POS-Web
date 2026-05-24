@@ -23,7 +23,7 @@ Observed in current implementation:
 - Layout uses a simple two-column row with large logo and form, but limited responsive strategy for small screens.
 - Validation appears after submit only; no progressive guidance while users type.
 - Error handling uses a single generic message (Invalid credentials) without recovery guidance.
-- Form labels and spacing are functional but visually basic and not hierarchy-optimized.
+- Form labels and spacing are functional but visually basic and not hierarchy-optimized.asdasdas
 - Styling appears mixed between custom classes and utility classes, with no dedicated login design token layer.
 - No visible loading state on submit, which can feel unresponsive.
 - No clear support for keyboard-first UX beyond default browser behavior.
